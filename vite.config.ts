@@ -1,0 +1,28 @@
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'node:url';
+import {defineConfig} from 'vite';
+
+const projectRoot = fileURLToPath(new URL('.', import.meta.url));
+
+export default defineConfig(() => {
+  return {
+    base: './',
+    // Somente arquivos do site entram no build. O arquivo antigo do AI Studio
+    // fica preservado em public/assets/aistudio, mas não é enviado ao Pages.
+    publicDir: 'public/site',
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': projectRoot,
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modify—file watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+  };
+});

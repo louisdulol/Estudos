@@ -1,0 +1,19 @@
+{
+  "name": "ETE Porto Digital | Preparação",
+  "short_name": "Estudo ETE",
+  "description": "Simulados, questões, revisões e flashcards para a prova da ETE Pernambuco.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#f4f5f7",
+  "icons": [
+    {
+      "src": "./ete-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
